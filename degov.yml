@@ -1,0 +1,137 @@
+name: You DAO Name
+# This is the unique code for your DAO, see https://github.com/ringecosystem/degov-registry/tree/main/daos to avoid duplication
+code: your-dao-code
+logo: https://your-logo-url.com/logo.svg
+siteUrl: https://your-site-url.com
+offChainDiscussionUrl: https://your-offchain-discussion-url.com
+editLink: https://dao-info-edit-link.com
+description: |
+  A brief description of the DAO, which will be displayed on the DAO's homepage.
+
+# The following fields in the links are optional and will be used to display basic information about the DAO
+links:
+  coingecko: https://www.coingecko.com/en/coins/COIN_NAME
+  website: https://example.com/
+  twitter: https://x.com/TWITTER
+  discord: https://discord.com/invite/DISCORD
+  telegram: https://t.me/TELEGRAM
+  github: https://github.com/GITHUB
+  email: # It's ok to leave it empty
+
+# The custom theme configuration for the DAO, this is optional.
+theme:
+  logoDark: https://your-logo-dark-url.com/logo-dark.svg
+  logoLight: https://your-logo-light-url.com/logo-light.svg
+  banner: https://your-banner-url.com/banner.svg
+  bannerMobile: https://your-banner-mobile-url.com/banner-mobile.svg
+  # The general faqs displayed on the dashboard, at most 5 items
+  faqs:
+    - question: q1
+      answer: http://the-answer-of-q1.com
+    - question: q2
+      answer: http://the-answer-of-q2.com
+    - question: q3
+      answer: http://the-answer-of-q3.com
+    - question: q4
+      answer: http://the-answer-of-q4.com
+    - question: q5
+      answer: http://the-answer-of-q5.com
+
+
+# Wallet connection related configuration
+wallet:
+  # if you want to use wallet connect, you need to provide the project id, please refer to https://walletconnect.network/ for more information.
+  walletConnectProjectId:
+
+# Chain information
+chain:
+  # chain id
+  id: 1
+  # chain name, displayed on the project dashboard
+  name: Ethereum
+  # chain logo
+  logo: https://icons.llamao.fi/icons/chains/rsz_ethereum.jpg
+  rpcs:
+    - https://ethereum-rpc.publicnode.com
+  explorers:
+    - https://etherscan.io
+  nativeToken:
+    # native token symbol
+    symbol: ETH
+    # fetch price symbol of this token
+    priceId: ethereum
+    # decimals of native token
+    decimals: 18
+    # native token logo
+    logo: http://app.example.com/token-logo.svg
+
+# Indexer related configuration
+indexer:
+  # your deployed indexer endpoint default endpoint set by env.DEGOV_INDEXER_POR
+  endpoint: http://localhost:4350/graphql
+  # The start block of the indexer
+  startBlock: 0
+  ## Optional: If you want the indexer to use a different endpoint than the default provided in the chain configuration above, specify it here. WebSocket endpoints are also supported.
+  # rpc: https://rpc.your.network
+  ## Optional: Degov uses sqd.ai to index your contract. You can use the gateway for faster synchronization. For more information, please refer to https://docs.sqd.ai/subsquid-network/reference/networks/
+  # gateway: https://gateway.your.network
+
+# AI Agent related configuration
+aiAgent:
+  endpoint: https://agent.degov.ai
+
+# Core contracts related to the DAO Governance
+contracts:
+  # governor contract
+  governor: "0x0000000000000000000000000000000000000000"
+  # governor token contract
+  governorToken:
+    address: "0x0000000000000000000000000000000000000000"
+    # token standard: only support ERC20 or ERC721
+    # This field is crucial as it determines how the index calculates token quantities. Please ensure it is filled out accurately based on the actual token configuration.
+    standard: ERC20 or ERC721
+  timeLock: "0x0000000000000000000000000000000000000000"
+
+# The treasury assets information (Optional)
+# If not provided, Degov will fetch the assets via built-in degov-api, otherwise, will use the provided list.
+# Automatic fetching treasury assets may not cover some less known chains, manual configuration is available in that case.
+treasuryAssets:
+  - name: FT
+    contract: "0x0000000000000000000000000000000000000000"
+    standard: ERC20
+    priceId: FT
+    logo: # Default logo if not provided
+  - name: NFT
+    contract: "0x0000000000000000000000000000000000000000"
+    standard: ERC721
+    priceId: NFT
+    logo: # Default logo if not provided
+
+# The treasury safes information
+safes:
+  - name: Safe Account 01
+    chainId: 42161
+    link: https://app.safe.global/home?safe=arb1:0x0000000000000000000000000000000000000000
+  - name: Safe Account 02
+    chainId: 11155111
+    link: https://app.safe.global/home?safe=sep:0x0000000000000000000000000000000000000000
+
+# The apps listed in the navigation bar of the DAO
+apps:
+  # The token wrap app developed by Degov, see https://github.com/ringecosystem/degov-essential/tree/main/token-wrap
+  - name: Token Wrap
+    description: Convert back and forth between the native token and the wrapped governance token
+    icon: https://raw.githubusercontent.com/ringecosystem/degov/refs/heads/main/packages/web/public/example/logo.svg
+    link: https://token-wrap.degov.ai?config=https://degov-dev.vercel.app/degov.yml
+    params:
+      sourceToken:
+        address: '0x48C817eebE1fD79F946bd6b976EF579540517121'
+        icon: '/example/token.svg'
+      wrapToken:
+        address: '0x0ef0827A9d5D329DFbaA14c7d5Aae364453A4D32'
+        icon: '/example/token.svg'
+
+  - name: Another App
+    description: Another app description
+    icon: https://app.example.com/icon.svg
+    link: http://app.example.com
